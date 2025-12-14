@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Truyện Cổ Tích Tấm Cám</title>
+    <!-- Tải Tailwind CSS để hỗ trợ responsive và utilities -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Tải Fonts: Chỉ giữ Playfair Display cho tiêu đề, nội dung sử dụng Times New Roman -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&display=swap" rel="stylesheet">
+    
+    <style>
+        /* Thiết lập màu sắc và font chữ chủ đạo: Pastel Mint & Blush Pink */
+        :root {
+            --color-primary: #80CBC4; /* Xanh Mint Pastel */
+            --color-secondary: #F48FB1; /* Hồng Blush Pastel Thanh lịch */
+            --color-background: #FFFFFF; /* Nền Trắng tinh khôi */
+            --color-text: #4A4A4A; /* Xám than mềm mại */
+        }
+
+        body {
+            /* Thay đổi font chữ nội dung thành kiểu serif cổ điển (giống Times New Roman) */
+            font-family: 'Times New Roman', Times, serif; 
+            background-color: var(--color-background);
+            color: var(--color-text);
+            line-height: 1.8;
+            padding-top: 0; 
+            padding-bottom: 3rem;
+        }
+
+        /* --- Animations --- */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes pulseGlow {
+            0% { box-shadow: 0 0 10px rgba(244, 143, 177, 0.5); }
+            50% { box-shadow: 0 0 20px rgba(244, 143, 177, 1.0); }
+            100% { box-shadow: 0 0 10px rgba(244, 143, 177, 0.5); }
+        }
+
+        /* --- Header và Parallax Effect (Chuyển động nhẹ) --- */
+        header {
+            background-color: var(--color-primary);
+            color: white;
+            padding: 5rem 0; 
+            margin-bottom: 2rem;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1); 
+            position: relative;
+            /* Thêm chuyển động: Dùng background-attachment fixed cho Parallax nhẹ */
+            background-image: linear-gradient(135deg, var(--color-primary) 0%, #A3E4D7 100%);
+            background-attachment: scroll; 
+            overflow: hidden;
+            animation: fadeIn 1s ease-out;
+        }
+
+        .header-content {
+            max-width: 900px;
+            margin: 0 auto;
+            text-align: center;
+            padding: 0 1rem;
+            position: relative;
+            z-index: 10;
+        }
+
+        h1 {
+            font-family: 'Playfair Display', serif;
+            font-weight: 900;
+            font-size: 5rem; /* Tiêu đề lớn nhất */
+            color: var(--color-secondary);
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+            margin-bottom: 0.5rem;
+            letter-spacing: 0.1rem;
+        }
+
+        .author {
+            font-style: italic;
+            font-size: 1.3rem;
+            color: #FFFFFF; 
+            margin-top: 0.5rem;
+            text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.1);
+        }
+
+        .book-cover {
+            margin-top: 3rem;
+            display: flex;
+            justify-content: center;
+            padding: 0 1rem;
+            animation: fadeIn 1.5s ease-out 0.5s both; /* Trễ để cover hiện sau header */
+        }
+        
+        .book-cover img {
+            max-width: 90%;
+            height: auto;
+            border: 10px solid var(--color-secondary); 
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.25); /* Bóng đổ mềm mại, sâu hơn */
+            border-radius: 20px; /* Góc bo lớn, hiện đại */
+            transition: transform 0.6s cubic-bezier(0.25, 0.8, 0.25, 1.0); /* Chuyển động mượt mà hơn */
+        }
+
+        .book-cover img:hover {
+            transform: scale(1.05) rotate(1deg);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.35);
+        }
+
+        /* --- Main Content --- */
+        main {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
+
+        article section {
+            background-color: white;
+            padding: 2.5rem; 
+            margin-bottom: 2.5rem;
+            border-radius: 18px; 
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08); /* Bóng đổ nhẹ hơn */
+            border: 1px solid #EEEEEE;
+            border-top: 6px solid var(--color-primary); /* Viền màu Mint ở trên */
+            transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); /* Hiệu ứng "pop" nhẹ */
+            animation: fadeIn 0.8s ease-out;
+        }
+        
+        article section:hover {
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+            transform: translateY(-5px); 
+        }
+
+        h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.4rem;
+            font-weight: 700;
+            color: var(--color-primary);
+            border-bottom: 2px solid var(--color-secondary);
+            padding-bottom: 0.75rem;
+            margin-bottom: 1.5rem;
+        }
+
+        /* Quote Section Styling (Hiệu ứng phép màu Pastel) */
+        .quote-section blockquote {
+            border-left: 5px solid var(--color-secondary);
+            padding-left: 2rem;
+            margin: 2rem 0;
+            font-style: italic;
+            font-size: 1.2rem;
+            background-color: #FFF7F9; /* Màu nền hồng siêu nhạt */
+            padding: 1.5rem 2rem;
+            border-radius: 12px;
+            box-shadow: 0 0 15px rgba(244, 143, 177, 0.4); 
+            animation: pulseGlow 4s infinite alternate; 
+        }
+
+        .quote-section footer {
+            display: block;
+            text-align: right;
+            font-style: normal;
+            font-size: 1rem;
+            color: var(--color-secondary);
+            margin-top: 1rem;
+            font-weight: 600;
+        }
+
+        /* Fun Facts List */
+        .fun-facts ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .fun-facts li {
+            margin-bottom: 0.8rem;
+            padding-left: 2.5rem;
+            position: relative;
+            background-color: #F8FCFB; 
+            padding: 0.8rem 1rem;
+            border-radius: 8px;
+            transition: background-color 0.3s ease;
+        }
+        
+        .fun-facts li:hover {
+            background-color: #E6F5F2; /* Mint nhạt khi hover */
+        }
+
+        .fun-facts li::before {
+            content: '🌸'; /* Biểu tượng Pastel */
+            position: absolute;
+            left: 5px;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 1.5rem;
+            background-color: #E0F2F1; /* Màu Mint nhạt cho Footer */
+            color: var(--color-primary);
+            margin-top: 3rem;
+            font-size: 0.9rem;
+            border-radius: 10px;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 600px) {
+            h1 {
+                font-size: 3.5rem;
+            }
+            h2 {
+                font-size: 2rem;
+            }
+            header {
+                padding: 3rem 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <h1><em> Tấm Cám</em></h1>
+            <p class="author"><strong>Tác giả: Truyện cổ tích dân gian Việt Nam</strong></p>
+        </div>
+        <div class="book-cover">
+            <!-- Sử dụng placeholder với màu sắc mới: Pastel Mint và Blush Pink -->
+            <img 
+                src="https://baovannghe.vn/stores/news_dataimages/2024/122024/20/03/truyen-co-tich-tam-cam-1280x76820241220031136.jpg?rt=20241220031138" 
+                alt="Hình minh họa Tấm Cám" 
+                width="800" 
+                height="600"
+            >
+        </div>
+    </header>
+
+    <main>
+        <article>
+            <section class="summary">
+                <h2>📖 Tóm Tắt Nội Dung</h2>
+                <p>Truyện Tấm Cám kể về cô gái hiền lành Tấm sống cùng mẹ kế và em gái độc ác Cám. Tấm liên tục bị mẹ con Cám hãm hại, từ việc lừa lấy tép, giết cá bống (vật nuôi được Bụt ban), cho đến khi Tấm trở thành Hoàng hậu.</p>
+                <p>Mẹ con Cám bày mưu giết Tấm khi về giỗ cha bằng cách chặt cây cau. Linh hồn Tấm không siêu thoát, cô lần lượt tái sinh thành chim Vàng Anh, cây xoan đào, khung cửi, và cuối cùng là bước ra từ quả thị để sống với một bà lão. Vua nhận ra Tấm nhờ miếng trầu têm cánh phượng và đón Tấm trở lại cung.</p>
+                <p>Cám ghen tức hỏi Tấm bí quyết làm đẹp, Tấm chỉ Cám nhảy vào hố nước sôi để mong có da dẻ hồng hào như mình. Cám chết, mẹ kế cũng qua đời sau đó. Tấm trở lại ngôi vị Hoàng hậu, thể hiện niềm tin mãnh liệt của dân gian Việt Nam vào sự chiến thắng cuối cùng của cái thiện trước cái ác.</p>
+            </section>
+
+            <section class="quote-section">
+                <h2>✨ Trích Dẫn Đặc Sắc</h2>
+                <blockquote>
+                    <p>"Con cứ về bới tro bếp mà kiếm, sẽ thấy trong đó có một con cá bống bé tí. Con đem về nuôi trong chum, cho ăn cơm và nhớ đừng để ai trông thấy!"</p>
+                    <footer>— Lời của "Bụt" (người luôn giúp đỡ Tấm vượt qua mọi khó khăn)</footer>
+                </blockquote>
+            </section>
+            
+            <section class="reflection">
+                <h2>💭 Cảm Nhận Cá Nhân </h2>
+                <p>Tấm Cám là câu chuyện tiêu biểu cho cuộc đấu tranh giữa cái Thiện và cái Ác. Dù phải chịu đựng nhiều khổ cực, nhưng nghị lực sống và sự nhân hậu của Tấm luôn được đền đáp.</p>
+                <p>Truyện gửi gắm thông điệp sâu sắc về sự công bằng: "Người tốt sẽ gặp điều lành, kẻ ác sẽ bị trừng phạt, đồng thời ca ngợi tình yêu thương và lẽ phải trong cuộc sống.</p>
+                <p> Truyện Tấm Cám còn không chỉ là một biểu tượng kinh điển của văn học dân gian Việt Nam, mà còn hấp dẫn bởi những tình tiết ly kỳ, mà còn sâu sắc ở giá trị nhân văn. Truyện đề cao lòng nhân hậu, sự kiên trì của Tấm, đối lập gay gắt với sự tàn ác, tham lam của mẹ con Cám, qua đó thể hiện rõ ràng xung đột thiện ác muôn thuở.</p>
+                <p> Đặc biệt, chi tiết Tấm liên tục hóa thân (từ chim, cây, đến quả thị) đã thể hiện sức sống mãnh liệt, không thể bị hủy diệt của cái thiện. Cuối cùng, việc Tấm trở lại ngôi vị và trừng trị cái ác một cách dứt khoát khẳng định niềm tin mãnh liệt của người xưa vào công lý, sự công bằng và hạnh phúc.</p>
+            </section>
+
+            <section class="fun-facts">
+                <h2>💡 Thông Tin Thú Vị (Fun Facts)</h2>
+                <ul>
+                    <li><em><ol>Thông tin 1:</em> Truyện Tấm Cám có cốt truyện tương đồng với truyện *Cô bé Lọ Lem (Cinderella)* của phương Tây, cho thấy sự tương đồng về mô-típ truyện cổ trên toàn thế giới.</ol></li>
+                    <li><em><ol>Thông tin 2:</em> Trong một số dị bản, chi tiết Tấm trừng trị Cám bằng cách làm mắm được xem là chi tiết thể hiện tinh thần "công bằng quyết liệt" của người Việt xưa đối với kẻ ác.</ol></li>
+                    <li><em><ol>Thông tin 3:</em> Cá Bống có thể là Mẹ Tấm: Một dị bản phổ biến ở miền Bắc cho rằng con cá bống không chỉ là vật được Bụt ban, mà chính là mẹ ruột của Tấm tái sinh để che chở cho con gái.</ol></li>
+                </ul>
+            </section>
+
+        </article>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Trang web giới thiệu Tấm Cám - Hoàn thành dự án HTML Semantic</p>
+    </footer>
+
+</body>
+</html>
