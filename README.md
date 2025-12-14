@@ -220,7 +220,7 @@
             <p class="author"><strong>Tác giả: Truyện cổ tích dân gian Việt Nam</strong></p>
         </div>
         <div class="book-cover">
-            <!-- Sử dụng placeholder với màu sắc mới: Pastel Mint và Blush Pink -->
+            <!-- Hình minh họa Tấm Cám (URL đã được giữ nguyên) -->
             <img 
                 src="https://baovannghe.vn/stores/news_dataimages/2024/122024/20/03/truyen-co-tich-tam-cam-1280x76820241220031136.jpg?rt=20241220031138" 
                 alt="Hình minh họa Tấm Cám" 
@@ -258,9 +258,10 @@
             <section class="fun-facts">
                 <h2>💡 Thông Tin Thú Vị (Fun Facts)</h2>
                 <ul>
-                    <li><em><ol>Thông tin 1:</em> Truyện Tấm Cám có cốt truyện tương đồng với truyện *Cô bé Lọ Lem (Cinderella)* của phương Tây, cho thấy sự tương đồng về mô-típ truyện cổ trên toàn thế giới.</ol></li>
-                    <li><em><ol>Thông tin 2:</em> Trong một số dị bản, chi tiết Tấm trừng trị Cám bằng cách làm mắm được xem là chi tiết thể hiện tinh thần "công bằng quyết liệt" của người Việt xưa đối với kẻ ác.</ol></li>
-                    <li><em><ol>Thông tin 3:</em> Cá Bống có thể là Mẹ Tấm: Một dị bản phổ biến ở miền Bắc cho rằng con cá bống không chỉ là vật được Bụt ban, mà chính là mẹ ruột của Tấm tái sinh để che chở cho con gái.</ol></li>
+                    <!-- Đã sửa lỗi cấu trúc HTML: Loại bỏ thẻ <ol> bị lồng sai bên trong <li> và sử dụng thẻ <strong> để làm nổi bật tiêu đề thông tin. -->
+                    <li><strong>Thông tin 1:</strong> Truyện Tấm Cám có cốt truyện tương đồng với truyện <em>Cô bé Lọ Lem (Cinderella)</em> của phương Tây, cho thấy sự tương đồng về mô-típ truyện cổ trên toàn thế giới.</li>
+                    <li><strong>Thông tin 2:</strong> Trong một số dị bản, chi tiết Tấm trừng trị Cám bằng cách làm mắm được xem là chi tiết thể hiện tinh thần "công bằng quyết liệt" của người Việt xưa đối với kẻ ác.</li>
+                    <li><strong>Thông tin 3:</strong> Cá Bống có thể là Mẹ Tấm: Một dị bản phổ biến ở miền Bắc cho rằng con cá bống không chỉ là vật được Bụt ban, mà chính là mẹ ruột của Tấm tái sinh để che chở cho con gái.</li>
                 </ul>
             </section>
 
